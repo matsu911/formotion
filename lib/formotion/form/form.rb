@@ -276,7 +276,7 @@ module Formotion
             next if row.templated?
             saved_row_value = saved_render[row.key]
 
-            if uses_display_key && section.select_one && saved_render.include?(section.key.to_s)
+            if (uses_display_key || row.type.to_sym == :check) && section.select_one && saved_render.include?(section.key.to_s)
               saved_row_value = row.key.to_s == saved_render[section.key.to_s].to_s
             end
 
